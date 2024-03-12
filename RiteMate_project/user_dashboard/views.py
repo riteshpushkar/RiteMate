@@ -59,7 +59,43 @@ def delete(request, id):
         
 
 def edit(request, id) :
-    data = listing.objects.filter(pk=id)
+
+    # to reflect old data in the frontend bas iske liye ye mehnat hai
+
+    data = listing.objects.filter(pk=id)  # filter jo hai wo saare matching objects le aayega (bas error nahi dega), thats why we'll use first object only (get method is better option BTW in this case)
     
-    return render(request, 'edit.html', {'data' : data})
+    listing_object = data[0]  # Accessing the first (and only) object in the queryset
+    name = listing_object.name
+    location = listing_object.location
+    rent = listing_object.rent
+    gender = listing_object.gender
+    description = listing_object.description
+    image = listing_object.image
+
+    
+
+    if request.method == "POST":
+        name = request.POST.get('name')
+        location = request.POST.get('location')
+        rent = request.POST.get('rent')
+        gender = request.POST.get('gender')
+        description = request.POST.get('description')
+        image = request.FILES.get('image')
+
+        print(name, location, rent)
+
+        listing_obj = listing.objects.get(pk=id)
+        
+        listing_obj.name = name
+        listing_obj.location = location
+        listing_obj.rent = rent
+        listing_obj.gender = gender
+        listing_obj.description = description
+        if image:
+            listing_obj.image = image
+        
+        listing_obj.save()
+        return redirect('/dashboard/')
+    return render(request, 'edit.html', {'name' : name, 'location' : location, 'rent' : rent, 'gender' : gender, 'description' : description, 'image' : image})
+
     

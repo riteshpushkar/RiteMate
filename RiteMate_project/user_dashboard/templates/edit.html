@@ -71,25 +71,26 @@
             
             <!-- Name Input -->
             <label for="name">Your Name</label> 
-            <input type="text" id="name" name="name" value="12345678">
+            <input type="text" id="name" name="name" value="{{ name }}">
             
             <br><br>
             <label for="Location">Property Location</label> 
-            <input type="text" id="location" name="location" value={{data.location}}>
+            <input type="text" id="location" name="location" value="{{ location }}">
             
             <br><br>
             <label for="rent">Rent(per/month) INR</label> 
-            <input type="number" id="rent" name="rent" value={{data.rent}}>
+            <input type="number" id="rent" name="rent" value="{{ rent }}">
             
             <br><br>
             <label for="gender">Looking For(Gender)</label> 
-            <input type="text" id="gender" name="gender" value={{data.gender}}>
+            <input type="text" id="gender" name="gender" value="{{ gender }}">
             
             <br><br>
             
             <!-- Description Input -->
             <label for="description">Description of Property</label> 
-            <textarea id="description" name="description" aria-valuetext="{{data.description}}"></textarea>
+            <textarea id="description" name="description">{{ description }}</textarea>
+
             
             <br><br>
             
@@ -98,8 +99,6 @@
             <input type="file" id="image" name="image" accept="image/*">
             
             <br><br>
-            <input type="hidden" name="id" value="{{ data.id }}">
-
             <button type="submit">Submit Your Property Details</button>
         </form>
     </div>

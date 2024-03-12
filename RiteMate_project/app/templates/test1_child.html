@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}My Site{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <!-- Common header content -->
+        {% block header %}
+        
+        {% endblock %}
+    </header>
+
+    <main>
+        {% block content %}
+            <!-- Default content if not overridden in child templates -->
+            <p>This is the main content area.</p>
+        {% endblock %}
+    </main>
+
+    <footer>
+        <!-- Common footer content -->
+        <p>&copy; 2024 My Site. All rights reserved.</p>
+    </footer>
+</body>
+</html>

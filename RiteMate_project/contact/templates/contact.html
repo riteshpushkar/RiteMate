@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% include 'navbar.html' %}
+<head>
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 20px;
+            background-color: #ffffff; /* White background */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Center align content */
+            position: relative;
+            margin: 0 auto; /* Center container horizontally */
+        }
+
+        .container img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form button {
+            width: calc(100% - 20px); /* Adjusted width for padding */
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ced4da; /* Light gray border */
+            border-radius: 5px;
+            outline: none;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            transform: translateY(-5px); /* Move up on focus */
+        }
+
+        .contact-form button {
+            background-color: #015d36; /* Primary blue color */
+            color: #ffffff; /* White text color */
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #b07a17;
+        }
+
+        .contact-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .contact-icons a {
+            width: 40px;
+            height: 40px;
+            background-color: #004f25; /* Primary blue color */
+            color: #ffffff; /* White text color */
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+        }
+
+        .contact-icons a:hover {
+            transform: translateY(-5px); /* Move up on hover */
+            background-color: #b07a17;
+        }
+
+
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+
+
+<body>
+    <br>
+    <div class="messages" style="text-align: center; position: relative; border: #b5cfd4; color: rgb(32, 32, 115); background-color: #ff4400; font-size: 20px; padding: 30xp;">
+        {% for msg in messages %}
+            <div class="success-message">{{ msg }}</div>
+        {% endfor %}
+    </div>
+    <div style="text-align: center; ">
+    <div class="container">
+        
+
+        <img src="/static/connect.jpg" alt="Connect">
+
+        <div class="contact-form">
+            <form method="POST">
+                {% csrf_token %}
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email">
+                <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+
+        <div class="contact-icons">
+            <a href="#"><i class="fas fa-phone"></i></a>
+            <a href="#"><i class="fas fa-envelope"></i></a>
+            <a href="#"><i class="fas fa-map-marker"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

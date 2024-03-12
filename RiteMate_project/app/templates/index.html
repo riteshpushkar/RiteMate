@@ -1,52 +1,79 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-DEvGC8JqrlTAg0tP5xnL9W2SmWtKwJ1GGw08qkvBbu3gZCfLjxN/y7W+nd8+xyq8" crossorigin="anonymous">
+    
     <title>RiteMate</title>
     <style>
+        /* Your existing styles */
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
             }
+
             to {
                 opacity: 1;
             }
         }
-
 
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f2f2f2;
+            height: 100vh; /* Set body height to full screen */
         }
-        nav {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 0;
+
+        h1 {
             text-align: center;
+            color: #144d5a;
+            font-size: 50px;
+            /* font-family: calibri; */
+            padding: auto;
+            padding-top: 10px;
         }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-        h1, h3 {
+
+        h3 {
             text-align: center;
             color: #333;
+            font-size: 30px;
         }
-        .container {
-            max-width: 800px;
+
+        .p {
+            text-align: center;
+            color: #000000;
+            font-size: 18px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container1 {
+            max-width: 100%;
+            height: 60%;
+            margin: 0 auto;
+            padding: 20px;
+
+            animation: fadeIn 1s ease;
+            background-color: rgb(242, 242, 242);
+            align-items: center;
+        }
+
+        .container2 {
+            max-width: 100%;
+            height: 100%;
             margin: 0 auto;
             padding: 20px;
             animation: fadeIn 1s ease;
+            background-color: rgb(255, 255, 255);
+            justify-content: center;
+            align-items: center;
         }
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
+
         button {
             background-color: #333;
             color: #fff;
@@ -54,32 +81,39 @@
             border: none;
             cursor: pointer;
         }
+
         button:hover {
             background-color: #555;
         }
+
         .top-cities {
             text-align: center;
             margin-bottom: 20px;
         }
+
         .top-cities a {
             margin: 0 10px;
             color: #333;
             text-decoration: none;
         }
+
         .image-container {
             text-align: center;
             animation: fadeIn 1s ease;
         }
+
         .image-container img {
             max-width: 100%;
             max-height: 400px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         .cta {
             text-align: center;
             margin-top: 20px;
         }
+
         .cta button {
             background-color: #ff4500;
             color: #fff;
@@ -89,52 +123,362 @@
             border-radius: 5px;
             transition: background-color 0.3s ease;
         }
+
         .cta button:hover {
             background-color: #ff6a00;
         }
-    </style>
-</head>
-<body> 
-    {% load static %}
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">Find Flat</a>
-        <a href="#">Find PG</a>
-        <a href="#">Find Partner</a>
-        <a href="#">Contact Us</a>
-        <a href="#">Login</a>
-    </nav>
-    <div class="container">
-        <h1>RiteMate</h1>
-        <h3>Struggling to find your perfect flat or flatmate? Huge brokerage!</h3>
-        <h3>Not anymore, we are here to help you. Get in direct contact with property owners or post your property...</h3>
 
-        <div>
-            <label for="search">Search your city here:</label><br>
-            <input type="text" name="search" id="search" >
-            <br>
-            <button>Submit</button>
+        .search_bar {
+            text-align: center;
+            margin-top: 100px;
+            padding: 30px;
+            font-size: xx-large;
+        }
+
+        input[type='text'] {
+            font-size: xx-large;
+            background-color: rgb(187, 187, 187);
+        }
+
+        .top-cities {
+            font-size: 20px;
+        }
+        @media only screen and (max-width: 600px) {
+        /* Your mobile styles here */
+        body {
+            font-size: 14px; /* Adjust font size for better readability on smaller screens */
+        }
+        h1 {
+            font-size: 25px; /* Adjust font size for h1 on smaller screens */
+        }
+        /* Add other styles for smaller screens */
+        }
+        
+
+
+    </style>
+   
+</head>
+
+<body>
+
+    {% include 'navbar.html' %}
+
+    <div class="messages" style="text-align: center; position: relative; border: #b5cfd4; color: rgb(32, 32, 115); background-color: #ff4400; font-size: 20px; padding: 30xp;">
+        {% for msg in messages %}
+            <div class="success-message">{{ msg }}</div>
+        {% endfor %}
+    </div>
+
+    <div style="text-align: center; padding: 30px;">
+        <input type="text" placeholder="Search Your Requirement" style="background: rgb(210, 226, 228); font-size: larger; width: 60%; text-align: center;">
+        <input type="button" value="Search" style="background: rgb(210, 226, 228); font-size: larger; text-align: center;">
+    </div>
+
+    <div class="container1">
+        <h1 class="text-[34px] lg:text-[55px] !text-gray-800 font-medium !leading-tight !font-poppins">
+            Find your safe and perfect place <br>
+            Rooms, Hostels & Roommates</h1>
+        <div style="padding: 40px;">
+            <div class="p">Frustrated by the traditional rental process? Huge brokerage!</div>
+            <div class="p">Not anymore, Experience a revolution in property hunting with direct owner connections.</div>
         </div>
-        <div class="top-cities">
-            Top Cities: 
-            <a href="#">Mumbai</a>
-            <a href="#">Delhi</a>
-            <a href="#">Bangalore</a>
-            <a href="#">Chennai</a>
+    </div>
+
+    <div class="container2">
+        <h1>Are you looking for prime properties?</h1>
+        <div class="top-cities" style="padding: 30px;">
+            Top Cities:
+            <a href="/display/">Mumbai</a>
+            <a href="/display/">Delhi</a>
+            <a href="/display/">Bangalore</a>
+            <a href="/display/">Chennai</a>
         </div>
-        <div class="image-container">
-            <img src="{% static 'conductor.jpg' %}" alt="Engaging Image">
-            <!-- <img src="#" alt="Engaging Image"> -->
+        <div class="top_cities">
+            <div class="image-container">
+                <img src="{% static 'conductor.jpg' %}" alt="Engaging Image" loading="lazy">
+            </div>
         </div>
         <div class="cta">
-            <h1>Are you looking for prime properties?</h1>
-            <p>View and book an appointment.</p>
-            <button>View Properties</button>
+            <p style="text-align: center;">View and book an appointment.</p><br>
+            <button style="background: rgb(210, 226, 228); font-size: larger; text-align: center;">
+
+            <a href="/display/" style="color: rgb(0, 0, 0); ">View Properties</a></button>
         </div>
     </div>
-    <div>
+
+    <div style="padding: 100px;">
         <h1>View Rooms in Popular Locations</h1>
-    {% include 'swiper.html' %}
+        {% include 'swiper.html' %}
     </div>
+
+    
 </body>
+    
+
+
+
+
+
+
+<body>
+    
+
+
+
+
+        <style>
+            .content {
+                
+                background-color: #fff;
+                
+                text-align: left;
+            }
+    
+            .content h2 {
+                color: #000000; /* Blue heading */
+                font-weight: bold;
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+    
+            .content p {
+                color: #333; /* Dark gray text */
+                font-size: 14px;
+                line-height: 1.5;
+                margin-bottom: 20px;
+            }
+    
+            .content b {
+                color: #000000; /* Blue text */
+                font-weight: bold;
+            }
+    
+            .content ul {
+                list-style-type: disc;
+                
+                color: #333; /* Dark gray text */
+            }
+    
+            .content ul li {
+                margin-bottom: 10px;
+            }
+    
+            .content button {
+                background-color: #000000; /* Primary blue color */
+                color: #fff; /* White text color */
+                border: none;
+                border-radius: 5px;
+                padding: 10px 20px;
+                font-size: 16px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+    
+            
+            p {
+                text-align: left;
+            }
+
+
+             /* Footer Styles */
+
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+footer {
+    background-color: #043a33;
+    color: #fff;
+    padding-bottom: 20px;
+    
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 40px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+}
+
+.about h2,
+.links h2,
+.contact-form h2 {
+    margin-bottom: 15px;
+}
+
+.contact {
+    margin-bottom: 15px;
+}
+
+.contact span {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.socials a {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+}
+
+.socials a:hover {
+    transform: scale(1.1);
+}
+
+.links ul {
+    list-style-type: none;
+}
+
+.links li {
+    margin-bottom: 10px;
+}
+
+.links a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-big {
+    padding: 15px;
+}
+
+.btn:hover {
+    background-color: #555;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    text-align: center;
+}
+
+
+                </style>
+    
+
+        <div class="content" style="padding: 70px;">
+            <h3 style="margin-bottom: 30px;";>How to Unlock Your Ideal Living Space with RiteMates</h3>
+    
+            <p>Are you struggling to find the perfect flat or the ultimate flatmate? Look no further than RiteMates, your all-in-one solution for discovering the finest spaces and compatible roommates. With 1000+ listings, RiteMates is engineered to simplify your quest, make it more efficient, and, most importantly, liberate you from those pesky brokerage fees. Let's dive into how RiteMates operates, so you can find the perfect spot for you.</p>
+    
+            <h2>1. Discover Your Ideal Location with Search:</h2>
+    
+            <p>The journey commences with a straightforward quest. On RiteMates, you possess the authority to search into your favored location and unearth the listings that align with your requirements. Whether you're in pursuit of a room, a flat, or looking for flatmates to share your space, our user-friendly exploration feature empowers you to filter your options based on your preferences, budget, and geographical preference.</p>
+    
+            <p>With our potent search tools, you can effortlessly sieve through the outcomes and obtain all the pivotal particulars about each listing. From the rental expense to the provided amenities, you'll have a clear understanding of what each option offers. This makes it easy to find the perfect living arrangement that fits your lifestyle and budget.</p>
+    
+            <h2>2. Explore 100% Brokerage-Free Listings:</h2>
+    
+            <p>At RiteMates, we boast of our broker-free approach. What does this signify for you? It means no need to struggle with the added costs of brokerage fees. All our listings are 100% brokerage-free, ensuring you obtain the best value for your money.</p>
+    
+            <p>You can also check compatibility match percentages for potential flatmate options. This distinctive feature aids you in measuring how well your inclinations harmonize with those of potential flatmates, making it simpler to pinpoint a suitable living situation. Once you've pinpointed a match, you can directly connect with them through our platform. You can opt to drop them a message via our secure chat feature or ring them up directly – the choice is yours.</p>
+    
+            <h2>3. Post Your Requirement and Safeguard Your Privacy:</h2>
+    
+            <p>RiteMates isn't solely about exploring listings. It's also about disclosing your own preferences to others. You can post out your requirements, creating a listing that spotlights what you seek in your ideal living arrangement. Your listing will be visible to other users, and they can get in touch if they think they meet your criteria.</p>
+    
+            <p>We grasp that privacy ranks supremely important, and that's why we offer the option to hide your contact number in your listing. Your personal information remains locked away, and you need not disclose your phone number to anyone until you're ready to do so. Interaction is streamlined through our secure chat feature, guaranteeing that your personal data remains confidential.</p>
+    
+            <h2>4. Create Teams:</h2>
+    
+            <p>We know that occasionally, you might not discover an ideal spot for yourself on our platform. Hence, we created the "Create team" function. If you can't find a place, consider joining forces with users searching for a home in the same locality. Working together can make your search easier. By establishing a team, you'll gain future flatmates and collectively track down your future abode.</p>
+    
+            <h2>5. Get Professional Help with Our RM Plan:</h2>
+    
+            <p>Short on time or want to speed up your hunt for the perfect flat or flatmate? Take help from our Relationship Managers. Our professional and dedicated Relationship Managers are here to understand your needs, choices, and lifestyle. They will employ their finesse to search the ideal matches for you, saving your time and effort in the process.</p>
+    
+            <p>With RiteMates, you can take comfort in the fact that your expedition to find the perfect room or roommate is smoothed and made more efficient. Our platform is architected to be user-friendly, secure, and free of brokerage fees, providing you with the ultimate ease in your search for rooms on rent, flats, and compatible flatmates. So, embark on your pursuit today and find your dreamy space with RiteMates.</p>
+        </div>
+
+    
+
+    
+
+
+
+
+
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h2>About Us</h2>
+                <p>RiteMates is your go-to platform for finding the perfect living space and compatible roommates. Say goodbye to traditional rental hassles and discover your dream home with us!</p>
+                <div class="contact">
+                    <span><i class="fas fa-envelope"></i> info@ritemates.com</span>
+                    <span><i class="fas fa-phone"></i> +91 123 456 7890</span>
+                </div>
+                <div class="socials">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section links">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="display/">Listings</a></li>
+                    <li><a href="contact/">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact-form">
+                <h2>Contact Us</h2>
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="email" name="email" class="text-input contact-input" placeholder="Your email address...">
+                    <textarea name="message" class="text-input contact-input" placeholder="Your message..."></textarea>
+                    <button type="submit" class="btn btn-big contact-btn">
+                        <i class="fas fa-envelope"></i>
+                        Send
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 RiteMates. All rights reserved.
+        </div>
+    </footer>
+
+
+</body>
+
 </html>
+
+

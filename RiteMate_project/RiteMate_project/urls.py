@@ -36,6 +36,7 @@ urlpatterns = [
     path('dashboard/', dashboard),
     path('payment/', payment),
     path('delete/<int:id>/', delete, name='deletedata'),
+    path('card_details/<int:id>/', card_details, name='card_details'),
     path('<int:id>/', edit, name='editdata'),
 ]
 

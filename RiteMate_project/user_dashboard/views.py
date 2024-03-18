@@ -71,9 +71,22 @@ def edit(request, id) :
     gender = listing_object.gender
     description = listing_object.description
     image = listing_object.image
+    if listing_object.image2:
+        image2 = listing_object.image2
+
+    if listing_object.image3:
+        image3 = listing_object.image3
+        
+    if listing_object.other_details :
+        other_details = listing_object.other_details
+
+    if listing_object.about_you :
+        about_you = listing_object.about_you
+
+    if listing_object.about_partner :
+        about_partner = listing_object.about_partner
 
     
-
     if request.method == "POST":
         name = request.POST.get('name')
         location = request.POST.get('location')
@@ -81,8 +94,17 @@ def edit(request, id) :
         gender = request.POST.get('gender')
         description = request.POST.get('description')
         image = request.FILES.get('image')
+        try:
+            image2 = request.FILES.get('image2')
+            image3 = request.FILES.get('image3')
+            other_details = request.POST.get('other_details')
+            about_you = request.POST.get('about_you')
+            about_partner = request.POST.get('about_partner')
+        except Exception as e:
+            print(e)
 
-        print(name, location, rent)
+
+
 
         listing_obj = listing.objects.get(pk=id)
         
@@ -91,11 +113,28 @@ def edit(request, id) :
         listing_obj.rent = rent
         listing_obj.gender = gender
         listing_obj.description = description
+
         if image:
             listing_obj.image = image
         
+        if image2:
+            listing_obj.image2 = image2
+        
+        if image3:
+            listing_obj.image3 = image3
+        
+        if other_details :
+            listing_obj.other_details = other_details
+
+        if about_you :
+            listing_obj.about_you = about_you
+
+        if about_partner :
+            listing_obj.about_partner = about_partner
+        
+        
         listing_obj.save()
         return redirect('/dashboard/')
-    return render(request, 'edit.html', {'name' : name, 'location' : location, 'rent' : rent, 'gender' : gender, 'description' : description, 'image' : image})
+    return render(request, 'edit.html', {'name' : name, 'location' : location, 'rent' : rent, 'gender' : gender, 'description' : description, 'image' : image, 'other_details': other_details, 'about_you': about_you, 'about_partner' : about_partner, 'image2' : image2, 'image3': image3})
 
     

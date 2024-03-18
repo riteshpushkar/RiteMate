@@ -84,6 +84,11 @@
             display: block;
             justify-content: center;
         }
+        a{
+            color: inherit;
+            text-decoration: none;
+        }
+        
 
         /* Adjust width for smaller screens */
         @media screen and (max-width: 768px) {
@@ -105,15 +110,20 @@
 </head>
 <body>
     {% include 'navbar.html' %}
-    <div style="text-align: center;">
-        <input type="text" placeholder="Search Your Requirement" style="background: rgb(210, 226, 228); font-size: larger; width: 60%; text-align: center;">
-        <input type="button" value="Search" style="background: rgb(210, 226, 228); font-size: larger; text-align: center;">
-    </div>
+    <form method="GET">
+        
+        <div style="text-align: center; padding: 30px;">
+            <input type="text" name="search_for" id="search_for" placeholder="Search Your Requirement" style="background: rgb(210, 226, 228); font-size: larger; width: 60%; text-align: center;">
+            <input type="submit" value="Search" style="background: rgb(217, 229, 231); color: grey; font-size: larger; text-align: center; padding: 8px; border-radius: 8px; border-color: rgb(221, 239, 255);">
+        </div>
+    </form>
+    
     
     </div>
     <div class="container">
         {% for details in info %}
         <div class="property-card">
+            <a href="{% url 'card_details' details.id %}">
             <h3>{{details.name}}</h3>
             <div class="flex_content">
                 <div class="flex_ele">
@@ -125,8 +135,11 @@
                 <div class="flex_ele">
                     <img src="{{ details.image.url }}" style="max-height: 180px;" alt="Image Missing">
                 </div>
+                
             </div>
+            </a>
         </div>
+        
         {% endfor %}
     </div>
 </body>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add News</title>
+    <title>Add Property</title>
     
     <style>
         body {
@@ -74,34 +74,69 @@
             {% csrf_token %}
             
             <!-- Name Input -->
-            <label for="name">Your Name</label> 
+            <label for="name">Your Name*</label> 
             <input type="text" id="name" name="name" required>
             
             <br><br>
-            <label for="Location">Property Location</label> 
+            <label for="Location">Property Location*</label> 
             <input type="text" id="location" name="location" required>
             
             <br><br>
-            <label for="rent">Rent(per/month) INR</label> 
+            <label for="rent">Rent(per/month) INR*</label> 
             <input type="number" id="rent" name="rent" required>
             
             <br><br>
-            <label for="gender">Looking For(Gender)</label> 
+            <label for="gender">Looking For(Gender)*</label> 
             <input type="text" id="gender" name="gender" required>
             
             <br><br>
             
             <!-- Description Input -->
-            <label for="description">Description of Property</label> 
+            <label for="description">Description of Property*</label> 
             <textarea id="description" name="description" required></textarea>
             
             <br><br>
+
+            <!-- Extra fields -->
+            <label for="other_details">Any other important detail(Optional)</label> 
+            <textarea id="other_details" name="other_details"></textarea>
+            
+            <br><br>
+
+            <label for="about_you">Describe Yourself(Optional)</label> 
+            <textarea id="about_you" name="about_you"></textarea>
+            
+            <br><br>
+
+            <label for="about_partner">Your Expectations with your partner(Optional)</label> 
+            <textarea id="about_partner" name="about_partner"></textarea>
+            
+            <br><br>
+
+
+            <!-- end of extraa fields -->
             
             <!-- Image Input -->
-            <label for="image">Upload image of the incident/news</label> 
+            <label for="image">Upload image of the Property*</label> 
             <input type="file" id="image" name="image" accept="image/*" required>
             
             <br><br>
+
+
+
+            <!-- Extra fields -->
+            <label for="image2">Upload image 2 of the Property(Optional) </label> 
+            <input type="file" id="image2" name="image2" accept="image/*">
+            
+            <br><br>
+
+            <label for="image3">Upload image 3 of the Property(Optional)</label> 
+            <input type="file" id="image3" name="image3" accept="image/*">
+            
+            <br><br>
+
+            <!-- end of extraa fields -->
+
             
             <button type="submit">Submit Your Property Details</button>
         </form>

@@ -170,10 +170,14 @@
         {% endfor %}
     </div>
 
-    <div style="text-align: center; padding: 30px;">
-        <input type="text" placeholder="Search Your Requirement" style="background: rgb(210, 226, 228); font-size: larger; width: 60%; text-align: center;">
-        <input type="button" value="Search" style="background: rgb(210, 226, 228); font-size: larger; text-align: center;">
-    </div>
+    <form method="GET">
+        
+        <div style="text-align: center; padding: 30px;">
+            <input type="text" name="search_for" id="search_for" placeholder="Search Your Requirement" style="background: rgb(210, 226, 228); font-size: larger; width: 60%; text-align: center;">
+            <input type="submit" value="Search" style="background: rgb(217, 229, 231); color: grey; font-size: larger; text-align: center; padding: 8px; border-radius: 8px; border-color: rgb(221, 239, 255);">
+        </div>
+    </form>
+    
 
     <div class="container1">
         <h1 class="text-[34px] lg:text-[55px] !text-gray-800 font-medium !leading-tight !font-poppins">

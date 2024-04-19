@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 class listing(models.Model) :
@@ -20,6 +21,7 @@ class listing(models.Model) :
     other_details = models.CharField(max_length = 800, null=True)
     about_you = models.CharField(max_length = 800, null=True)
     about_partner = models.CharField(max_length = 800, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
 
 

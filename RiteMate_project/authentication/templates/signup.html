@@ -4,7 +4,7 @@
 <style>
   body {
     margin: 0;
-    padding: 10px;
+    
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
 }
@@ -96,6 +96,12 @@ a:hover {
     {% include 'navbar.html' %}
     {% block content %}
     {% endblock %}
+
+    {% for msg in messages %}
+        <div class="container" style="margin: auto;width: fit-content;border-radius: 5px; margin-bottom: 0px;">
+            <h2 style="text-align: center; color: #be7b00; background-color: #00352b; box-sizing: content-box; padding: 10px;">{{msg}}</h2>
+        </div> 
+    {% endfor %}
     <div class="login-container">
         <h2>Sign-Up</h2>
         <form method="POST">

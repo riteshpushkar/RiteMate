@@ -8,6 +8,7 @@ class listing(models.Model) :
         ('any', 'Any')
     )
     name = models.CharField(max_length = 40)
+    email = models.EmailField()
     location = models.CharField(max_length = 200)
     rent = models.IntegerField()
     gender = models.CharField(max_length=12, choices=GENDER_CHOICES, default = 'Any')

@@ -145,3 +145,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/dashboard/'
 
+RAZOR_KEY_ID = 'rzp_test_dplNM1J6sP9G7a'
+RAZOR_KEY_SECRET = 'VwF96adn2lAF10wPWpSLanbT'

@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from app.views import *
 from contact.views import *
 from properties.views import *
@@ -34,10 +34,11 @@ urlpatterns = [
     path('properties/', properties),
     path('display/', display),
     path('dashboard/', dashboard),
-    path('payment/', payment),
+    # path('payment/', payment),
     path('delete/<int:id>/', delete, name='deletedata'),
     path('card_details/<int:id>/', card_details, name='card_details'),
     path('<int:id>/', edit, name='editdata'),
+    path('payment/', include('payment.urls'))
 ]
 
 

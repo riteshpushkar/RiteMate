@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+</head>
+<body background-color="brown">
+    <h1>Data corresponding to your email:</h1>
+
+    <ul>
+        {% for item in data %}
+            <li>{{ item.name }}</li>
+            <li>{{ item.email }}</li>
+            <li>{{ item.rent }}</li>
+            <li>{{ item.location }}</li>
+            <!-- Replace 'field_name' with the actual field names in your listing model -->
+        {% endfor %}
+    </ul>
+</body>
+</html>

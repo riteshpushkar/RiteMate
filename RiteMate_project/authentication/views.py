@@ -34,24 +34,24 @@ def user_signup(request):
 def user_login(request):
     if request.method == 'POST':
         email = request.POST.get('email')
-        password = request.POST.get('password')
-        hashed_password = make_password(password)
-
+        passw = request.POST.get('password')
+        password = make_password(passw)
+        
         try:
-            user = details.objects.get(email=email, password=hashed_password)
+            user = details.objects.get(email=email)
         except details.DoesNotExist:
-            user = None
+            messages.error(request, 'Invalid email')
+            return render(request, 'login.html')
 
-        if user:
-            user_listings = listing.objects.filter(email=email)
-            return render(request, 'dashboard.html', {'user_listings': user_listings})
-        else :
-            messages.warning(request, 'User does not exists, Try again')
-            return redirect(request.get_full_path())
+        if check_password(password, user.password):
+            messages.error(request, 'Invalid password')
+            return render(request, 'login.html')
+
+        data = listing.objects.filter(email=email) 
+        print(data)
+        return redirect('/dashboard/')
+
     return render(request, 'login.html')
-
-
-
 
 
 

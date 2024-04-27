@@ -25,6 +25,7 @@ def display(request) :
 def properties(request) :
     if request.method == 'POST' :
         name = request.POST.get('name')
+        email = request.POST.get('email')
         location = request.POST.get('location')
         rent = request.POST.get('rent')
         gender = request.POST.get('gender')
@@ -38,7 +39,8 @@ def properties(request) :
 
 
 
-        listing.objects.create(name = name, 
+        listing.objects.create(name = name,
+                                       email=email,
                                        location = location, 
                                        rent = rent,
                                        gender = gender,

@@ -7,6 +7,8 @@ from .models import *
 from app.models import *
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.hashers import check_password
+
+# from . views import listing
 # Create your views here.
 
 def user_signup(request):
@@ -34,25 +36,46 @@ def user_signup(request):
 def user_login(request):
     if request.method == 'POST':
         email = request.POST.get('email')
-        passw = request.POST.get('password')
-        password = make_password(passw)
+        password = request.POST.get('password')
         
         try:
             user = details.objects.get(email=email)
         except details.DoesNotExist:
             messages.error(request, 'Invalid email')
             return render(request, 'login.html')
-
+        
+        # Verifying password
         if check_password(password, user.password):
+            data = listing.objects.filter(email=email) 
+            return render(request, 'test.html', {'data': data})
+        else:
             messages.error(request, 'Invalid password')
             return render(request, 'login.html')
 
-        data = listing.objects.filter(email=email) 
-        print(data)
-        return redirect('/dashboard/')
-
     return render(request, 'login.html')
 
+
+
+
+
+
+
+# def user_login(request):
+#     if request.method == 'POST':
+#         email = request.POST.get('email')
+#         password = request.POST.get('password')
+        
+#         try:
+#             user = listing.objects.get(email=email)
+#         except listing.DoesNotExist:
+#             messages.error(request, 'Invalid email')
+#             return render(request, 'login.html', {'email': email})  # Pass email back to form
+
+#         # Store user's email in session
+#         request.session['user_email'] = email
+#         return redirect('/dashboard/')  # Redirect to dashboard without passing email in URL
+
+#     return render(request, 'login.html')
 
 
 

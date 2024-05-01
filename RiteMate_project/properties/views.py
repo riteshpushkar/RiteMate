@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 from django.db.models import Q
 
@@ -52,7 +52,8 @@ def properties(request) :
                                        about_you=about_you,
                                        about_partner=about_partner,
                                        )
-
+        data = listing.objects.filter(email=email)
+        return render(request, 'dashboard.html', {'data': data})
     return render(request, 'listing.html')
 
 

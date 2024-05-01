@@ -93,14 +93,7 @@
                     <th>Name</th>
                     <th>Location</th>
                     <th>Rent</th>
-                    <th>Gender</th>
-                    <th>Description</th>
-                    <th>other_details</th>
-                    <th>about_you</th>
-                    <th>about_partner</th>
-                    <th>Image</th>
-                    <th>Image2</th>
-                    <th>Image3</th>
+                    
                     <th></th>
                     <th><a href="/properties/"><button class="btn btn-success">Add</button></a></th>
                     
@@ -112,14 +105,7 @@
                     <td>{{ele.name}}</td>
                     <td>{{ele.location}}</td>
                     <td>{{ele.rent}}</td>
-                    <td>{{ele.gender}}</td>
-                    <td>{{ele.description | truncatechars:20 }}</td>
-                    <td>{{ele.other_details | truncatechars:20 }}</td>
-                    <td>{{ele.about_you | truncatechars:20 }}</td>
-                    <td>{{ele.about_partner | truncatechars:20 }}</td>
-                    <td>{{ele.image | truncatechars:10}}</td>
-                    <td>{{ele.image2 | truncatechars:10}}</td>
-                    <td>{{ele.image3 | truncatechars:10}}</td>
+                    
                     
                         <form action="{% url 'deletedata' ele.id %}" method="POST">
                             {% csrf_token %}
